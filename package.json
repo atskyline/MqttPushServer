@@ -1,0 +1,21 @@
+{
+  "name": "MqttPushServer",
+  "version": "0.0.1",
+  "description": "基于Mqtt实现的简单推送服务的服务端",
+  "author": "Eason Zhu <atskyline@gmail.com>",
+  "keywords": ["push", "mqtt", "android"],
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atskyline/MqttPushServer.git"
+  },
+  "dependencies": {
+    "express": "3.4.0",
+    "bunyan":"0.22.0",
+    "mqtt": "0.3.3",
+    "socket.io": "0.9.16"
+  },
+  "license": "MIT"
+}

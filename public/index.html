@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mqtt Push Server</title>
+  <link rel="stylesheet" href="css/pure-min.css">
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+  <div class="content" ng-controller="AppCtrl">
+
+    <div class="pure-g">
+      <div class="pure-u-4-5" id="log">
+        <!-- 日志部分 -->
+        <p ng-repeat="log in logs track by $index">
+          {{log}}
+        </p>
+      </div>
+      <div class="pure-u-1-5" id="userList">
+        <div class="pure-menu pure-menu-open" >
+         <!-- 用户列表 -->
+         <ul ng-repeat="app in apps">
+          <a class="pure-menu-heading" href="#" ng-click="selectApp(app.appName)">{{app.appName}}</a>
+          <li ng-repeat="client in app.clients" ng-click="selectClient(app.appName,client.clientName)">
+            <a href="#">{{client.clientName}} {{client.isOnline}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pure-g">
+    <!-- 消息栏 -->
+    <div class="pure-u-1" ng-if="alertMessage != null" ng-class="{true:'alert-success',false:'alert-error'}[pushSuccess]">
+      {{alertMessage}}
+    </div>
+  </div>
+
+  <div class="pure-g">
+    <!-- 发送栏部分 -->
+    <form class="pure-form" ng-submit="push()">
+      <fieldset>
+        <div class="pure-u-1-5">
+          <input class="pure-input-1" type="text" id="inputTarget" ng-model="target" placeholder="Target"/>
+        </div>
+        <div class="pure-u-3-5">
+          <input class="pure-input-1" type="text" id="inputMessage" ng-model="message" placeholder="Message"/>
+        </div>
+        <div class="pure-u-1-5">
+          <button class="pure-input-1 pure-button pure-button-primary" id="btnPush" type="submit" >Push</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<!-- Library -->
+<script type="text/javascript" src="js/lib/angular.min.js"></script>
+<script type="text/javascript" src="js/lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/lib/socket.io.js"></script>
+<!-- App -->
+<script type="text/javascript" src="js/services.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+<script type="text/javascript" src="js/filters.js"></script>
+<script type="text/javascript" src="js/directives.js"></script>
+</body>
+</html>

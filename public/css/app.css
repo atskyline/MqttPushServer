@@ -1,0 +1,23 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.content {
+    padding: 2em;
+}
+
+fieldset div {
+	padding-right: 10px;
+}
+
+#log,#userList {
+	height:700px;
+	overflow-y:auto;
+}
+
+#log{
+	word-wrap: break-word;
+	word-break: normal;
+}
